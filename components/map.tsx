@@ -8,7 +8,7 @@ import Styles from "../styles/map.module.css"
 
 function Map() {
   const [viewport, setViewport] = useState({
-    width: "85vw",
+    width: "60vw",
     height: "75vh",
     latitude: 44.4268,
     longitude: 26.1025,
@@ -20,7 +20,7 @@ function Map() {
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken="pk.eyJ1IjoiY2xhdWRpdXR1Y21lYW51IiwiYSI6ImNrb25iZTQ4OTAxcTczMHJzdmc4MDA5MHIifQ.K9dH5SFgNqUQ_kBV2NNTQQ"
-        mapStyle="mapbox://styles/claudiutucmeanu/ckoo9zjy97vur18qvrdxntswm"
+        mapStyle="mapbox://styles/claudiutucmeanu/ckoorfmdv178p17qkt33mdrzm"
         onViewportChange={(viewport) => {
           setViewport(viewport);
         }}

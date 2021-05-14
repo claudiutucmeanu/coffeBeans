@@ -1,4 +1,4 @@
-import { Center, Flex, Heading, Box } from "@chakra-ui/layout";
+import { Center, Flex, Heading } from "@chakra-ui/layout";
 
 function NavBar() {
     return (
@@ -7,7 +7,7 @@ function NavBar() {
         w="100%"
         mb={0}
         p={8}
-        paddingBottom={2}
+        paddingBottom={4}
         bg="white"
         color="#262626"
         >
