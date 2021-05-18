@@ -1,6 +1,6 @@
 import { Center, Flex, Heading } from "@chakra-ui/layout";
 
-function NavBar() {
+const NavBar = () => {
     return (
         <Flex
         as="nav"

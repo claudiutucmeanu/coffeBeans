@@ -1,7 +1,8 @@
 import Map from "../components/map";
-import { Box, Center, Flex, SimpleGrid, Wrap } from "@chakra-ui/react";
+import { Box, Center, Container, Wrap } from "@chakra-ui/react";
 import NavBar from "../components/Header";
 import Styles from "../styles/Home.module.css";
+import Tabel from "../components/Tabel";
 
 export default function Home() {
   return (
@@ -26,6 +27,10 @@ export default function Home() {
           <Map />
         </Box>
       </Wrap>
+      <Box className={Styles.line} />
+      <Container maxW="container.xl" marginTop="25px">
+        <Tabel />
+      </Container>
     </div>
   );
 }

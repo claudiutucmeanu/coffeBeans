@@ -6,7 +6,7 @@ import MapMarker from "./MapMarker";
 import Styles from "../styles/map.module.css"
 
 
-function Map() {
+const Map = () => {
   const [viewport, setViewport] = useState({
     width: "60vw",
     height: "75vh",
