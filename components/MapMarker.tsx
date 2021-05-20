@@ -59,7 +59,11 @@ const MapMarker = () => {
     </>
   ));
 
-  return cafePin;
+  return (
+    <>
+    {cafePin}
+    </>
+    );
 };
 
 export default MapMarker;
