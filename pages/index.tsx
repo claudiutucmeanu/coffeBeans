@@ -8,7 +8,6 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <Box className={Styles.line} />
       <Wrap padding={5}>
         <Center className={Styles.text}>
           <p className={Styles.par}>
@@ -24,7 +23,7 @@ export default function Home() {
           </p>
         </Center>
         <Box className={Styles.map}>
-          <Map />
+          <Map lat={44.4403} lon={26.1025} zoom={12} />
         </Box>
       </Wrap>
       <Box className={Styles.line} />

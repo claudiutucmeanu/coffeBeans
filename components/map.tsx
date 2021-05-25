@@ -6,13 +6,13 @@ import MapMarker from "./MapMarker";
 import Styles from "../styles/map.module.css"
 
 
-const Map = () => {
+const Map = (props) => {
   const [viewport, setViewport] = useState({
     width: "60vw",
     height: "75vh",
-    latitude: 44.4403,
-    longitude: 26.1025,
-    zoom: 12,
+    latitude: props.lat,
+    longitude: props.lon,
+    zoom: props.zoom,
   });
 
   return (

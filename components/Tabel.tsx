@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Table, Thead, Tbody, Tr, Th, TableCaption } from "@chakra-ui/react";
 import RandTabel from "./RandTabel";
-import { orderBy } from "lodash";
 
 const Tabel = () => {
-  const [columnToSort, setColumnToSort] = useState("");
-  const [sortOrder, setSortOrder] = useState("desc");
+  const [order, setOrder] = useState(false);
   const [cafe, setCafe] = useState([]);
 
   useEffect(() => {
@@ -30,13 +28,27 @@ const Tabel = () => {
     };
     fetchCafe();
   }, []);
-
-  
-
+  const orderHandler = (whatToSort) => {
+    // console.log(whatToSort);
+    if (order == false) {
+      let newCafe = cafe
+        .sort((a, b) => (a[whatToSort] > b[whatToSort] ? 1 : -1))
+        .slice();
+      setCafe(newCafe);
+      setOrder(true);
+    } else {
+      let newCafe = cafe
+        .sort((a, b) => (a[whatToSort] < b[whatToSort] ? 1 : -1))
+        .slice();
+      setCafe(newCafe);
+      setOrder(false);
+    }
+  };
 
   const cafeRand = cafe.map((cafes) => (
     <RandTabel
       key={cafes.id}
+      id={cafes.id}
       name={cafes.name}
       sector={cafes.sector}
       praj={cafes.praj}
@@ -45,11 +57,6 @@ const Tabel = () => {
   ));
 
 
-    
-
-    useEffect(() => {
-      console.log("adsadas");
-    }, [cafe])
   return (
     <Table variant="simple" maxW="container.xl" colorScheme="black">
       <TableCaption>Imperial to metric conversion factors</TableCaption>
@@ -57,16 +64,32 @@ const Tabel = () => {
         <Tr>
           <Th
             onClick={() => {
-   
-              const caffkeys = Object.keys(cafe)
-              setCafe([]);
+              orderHandler("name");
             }}
           >
             Nume Cafenea
           </Th>
-          <Th>Sector</Th>
-          <Th>Prajitorie Proprie</Th>
-          <Th>Cafenea</Th>
+          <Th
+            onClick={() => {
+              orderHandler("sector");
+            }}
+          >
+            Sector
+          </Th>
+          <Th
+            onClick={() => {
+              orderHandler("praj");
+            }}
+          >
+            Prajitorie Proprie
+          </Th>
+          <Th
+            onClick={() => {
+              orderHandler("caf");
+            }}
+          >
+            Cafenea
+          </Th>
         </Tr>
       </Thead>
       <Tbody>{cafeRand}</Tbody>
