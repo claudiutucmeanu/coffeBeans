@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table, Thead, Tbody, Tr, Th, TableCaption } from "@chakra-ui/react";
 import RandTabel from "./RandTabel";
+import Styles from "../styles/Tabel.module.css";
 
 const Tabel = () => {
   const [order, setOrder] = useState(false);
@@ -56,13 +57,12 @@ const Tabel = () => {
     />
   ));
 
-
   return (
     <Table variant="simple" maxW="container.xl" colorScheme="black">
-      <TableCaption>Imperial to metric conversion factors</TableCaption>
       <Thead>
         <Tr>
           <Th
+            className={Styles.hand}
             onClick={() => {
               orderHandler("name");
             }}
@@ -70,6 +70,7 @@ const Tabel = () => {
             Nume Cafenea
           </Th>
           <Th
+            className={Styles.hand}
             onClick={() => {
               orderHandler("sector");
             }}
@@ -77,6 +78,7 @@ const Tabel = () => {
             Sector
           </Th>
           <Th
+            className={Styles.hand}
             onClick={() => {
               orderHandler("praj");
             }}
@@ -84,6 +86,7 @@ const Tabel = () => {
             Prajitorie Proprie
           </Th>
           <Th
+            className={Styles.hand}
             onClick={() => {
               orderHandler("caf");
             }}

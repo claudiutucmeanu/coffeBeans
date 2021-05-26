@@ -33,7 +33,7 @@ const MapMarker = () => {
 
   const cafePin = cafe.map((cafes) => (
     <>
-      <Marker key={cafes.id} latitude={cafes.lat} longitude={cafes.lon}>
+      <Marker key={cafes.id} latitude={cafes.lat} longitude={cafes.lon} offsetLeft={-10}>
         <button
           className={Styles.pinbutton}
           onClick={(e) => {
