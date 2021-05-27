@@ -10,6 +10,7 @@ import {
   Button,
   Center,
   Flex,
+  FormControl,
 } from "@chakra-ui/react";
 import Styles from "../styles/formular.module.css";
 import Geocoder from "react-map-gl-geocoder";
@@ -20,12 +21,12 @@ export default function Home() {
     "pk.eyJ1IjoiY2xhdWRpdXR1Y21lYW51IiwiYSI6ImNrb25iZTQ4OTAxcTczMHJzdmc4MDA5MHIifQ.K9dH5SFgNqUQ_kBV2NNTQQ";
 
   const mapRef = useRef();
-  const nameRef = useRef("");
-  const adressRef = useRef("");
-  const infoRef = useRef("");
-  const prajRef = useRef("");
-  const cafRef = useRef("");
-  const sectorRef = useRef("");
+  const nameRef = useRef('').current;
+  const adressRef = useRef('').current;
+  const infoRef = useRef('').current;
+  const prajRef = useRef('').current;
+  const cafRef = useRef('').current;
+  const sectorRef = useRef('').current;
 
   const [viewport, setViewport] = useState({
     latitude: 44.4403,
@@ -53,12 +54,12 @@ export default function Home() {
   const submitHandler = async (event) => {
     event.preventDefault();
     const cafenea = {
-      name: nameRef.current.value,
-      adress: adressRef.current.value,
-      info: infoRef.current.value,
-      praj: prajRef.current.value,
-      caf: cafRef.current.value,
-      sector: sectorRef.current.value,
+      name: nameRef,
+      adress: adressRef,
+      info: infoRef,
+      praj: prajRef,
+      caf: cafRef,
+      sector: sectorRef,
       lat: viewport.latitude,
       lon: viewport.longitude,
     };
@@ -84,28 +85,39 @@ export default function Home() {
       <Header />
       <Container maxW="container.lg" className={Styles.casuta}>
         <form className={Styles.form} onSubmit={submitHandler}>
-          <FormLabel marginTop="3px">Nume</FormLabel>
-          <Input type="text" id="name" ref={nameRef} />
+          <FormControl isRequired>
+            <FormLabel marginTop="3px">Nume</FormLabel>
+            <Input type="text" id="name" ref={nameRef.value} />
+          </FormControl>
+          <FormControl isRequired>
           <FormLabel marginTop="4px">Adresă</FormLabel>
-          <Input type="text" id="adress" ref={adressRef} />
+          <Input type="text" id="adress" ref={adressRef.value} />
+          </FormControl>
+          <FormControl isRequired>
           <FormLabel marginTop="4px">Info</FormLabel>
-          <Textarea type="text" id="info" ref={infoRef} />
-          <FormLabel marginTop="4px" as="legend">
+          <Textarea type="text" id="info" ref={infoRef.value} />
+          </FormControl>
+          <FormControl isRequired>
+          <FormLabel marginTop="4px">
             Prajitorie proprie
           </FormLabel>
-          <Select placeholder="Alege optiune" id="praj" ref={prajRef}>
+          <Select placeholder="Alege optiune" id="praj" ref={prajRef.value}>
             <option>Da</option>
             <option>Nu</option>
           </Select>
-          <FormLabel marginTop="4px" as="legend">
+          </FormControl>
+          <FormControl isRequired>
+          <FormLabel marginTop="4px">
             Cafenea
           </FormLabel>
-          <Select placeholder="Alege optiune" id="caf" ref={cafRef}>
+          <Select placeholder="Alege optiune" id="caf" ref={cafRef.value}>
             <option>Da</option>
             <option>Nu</option>
           </Select>
-          <FormLabel>Sector</FormLabel>
-          <Select placeholder="Alege sectorul" id="sector" ref={sectorRef}>
+          </FormControl>
+          <FormControl isRequired>
+          <FormLabel marginTop="4px">Sector</FormLabel>
+          <Select placeholder="Alege sectorul" id="sector" ref={sectorRef.value}>
             <option>Sector 1</option>
             <option>Sector 2</option>
             <option>Sector 3</option>
@@ -113,7 +125,9 @@ export default function Home() {
             <option>Sector 5</option>
             <option>Sector 6</option>
           </Select>
-
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel marginTop=" 10px">Locațita pe hartă</FormLabel>
           <div style={{ height: "60vh", marginTop: "20px" }}>
             <ReactMapGL
               ref={mapRef}
@@ -134,6 +148,7 @@ export default function Home() {
               </div>
             </ReactMapGL>
           </div>
+          </FormControl>
           <Center>
             <Button
               marginTop={30}
